@@ -1,33 +1,26 @@
 type QueryRoot {
-  human(id: String!): Human!
+  greeting: GreetingQuery!
+  user: UserQuery!
 }
 
-type MutationRoot {
-  createHuman(newHuman: NewHuman!): Human!
-}
-
-enum Episode {
-  NEW_HOPE
-  EMPIRE
-  JEDI
-}
-
-"A humanoid creature in the Star Wars universe"
-input NewHuman {
+type Greetings {
   name: String!
-  appearsIn: [Episode!]!
-  homePlanet: String!
 }
 
-"A humanoid creature in the Star Wars universe"
-type Human {
-  id: String!
-  name: String!
-  appearsIn: [Episode!]!
-  homePlanet: String!
+type UserQuery {
+  findUserByName(name: String!): User!
+  findUsers: [User!]!
+}
+
+type User {
+  username: String!
+  email: String!
+}
+
+type GreetingQuery {
+  greetingName(name: String!): Greetings!
 }
 
 schema {
   query: QueryRoot
-  mutation: MutationRoot
 }

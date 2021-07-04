@@ -1,13 +1,32 @@
 #[path = "model/mod.rs"]
 mod model;
 
-use actix_web::{get, HttpResponse, Responder};
+use std::vec;
 
-#[get("/user")]
-async fn user() -> impl Responder {
-    let user = model::user::User {
-        username: String::from("user"),
-        email: String::from("test@example.com"),
-    };
-    HttpResponse::Ok().json(user)
+use juniper::FieldResult;
+
+pub struct UserQuery;
+
+#[juniper::graphql_object]
+impl UserQuery {
+    fn findUserByName(name: String) -> FieldResult<model::user::User> {
+        Ok(model::user::User {
+            username: name,
+            email: String::from("test@example.com"),
+        })
+    }
+
+    fn findUsers() -> FieldResult<Vec<model::user::User>> {
+        let users = vec![
+            model::user::User {
+                username: String::from("TestUser A"),
+                email: String::from("test@example.com"),
+            },
+            model::user::User {
+                username: String::from("TestUser B"),
+                email: String::from("foo@example.com"),
+            },
+        ];
+        Ok(users)
+    }
 }

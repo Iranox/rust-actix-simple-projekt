@@ -11,8 +11,6 @@ use juniper::http::GraphQLRequest;
 
 use crate::schema::{create_schema, Schema};
 
-// https://github.com/graphql-rust/juniper/issues/646
-
 async fn graphiql() -> HttpResponse {
     let html = graphiql_source("http://127.0.0.1:8080/graphql", None);
     HttpResponse::Ok()
@@ -50,7 +48,6 @@ async fn main() -> std::io::Result<()> {
             )
             .service(web::resource("/graphql").route(web::post().to(graphql)))
             .service(web::resource("/graphiql").route(web::get().to(graphiql)))
-            .service(hello_responder::hello::hello)
     })
     .bind("127.0.0.1:8080")?
     .run()

@@ -1,9 +1,21 @@
 use actix_web::{get, post, HttpResponse, Responder};
+use juniper::FieldResult;
+use juniper::GraphQLObject;
+
 use serde::Serialize;
 
-#[derive(Serialize)]
-struct MyObj {
+#[derive(Serialize, GraphQLObject)]
+struct Greetings {
     pub name: String,
+}
+
+pub struct GreetingQuery;
+
+#[juniper::graphql_object]
+impl GreetingQuery {
+    fn greetingName(name: String) -> FieldResult<Greetings> {
+        Ok(Greetings { name })
+    }
 }
 
 #[get("/")]
@@ -13,7 +25,7 @@ async fn hello() -> impl Responder {
 
 #[get("/test")]
 async fn index() -> impl Responder {
-    HttpResponse::Ok().json(MyObj {
+    HttpResponse::Ok().json(Greetings {
         name: String::from("user"),
     })
 }
