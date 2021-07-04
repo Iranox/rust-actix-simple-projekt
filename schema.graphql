@@ -1,0 +1,33 @@
+type QueryRoot {
+  human(id: String!): Human!
+}
+
+type MutationRoot {
+  createHuman(newHuman: NewHuman!): Human!
+}
+
+enum Episode {
+  NEW_HOPE
+  EMPIRE
+  JEDI
+}
+
+"A humanoid creature in the Star Wars universe"
+input NewHuman {
+  name: String!
+  appearsIn: [Episode!]!
+  homePlanet: String!
+}
+
+"A humanoid creature in the Star Wars universe"
+type Human {
+  id: String!
+  name: String!
+  appearsIn: [Episode!]!
+  homePlanet: String!
+}
+
+schema {
+  query: QueryRoot
+  mutation: MutationRoot
+}
