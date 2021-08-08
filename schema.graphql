@@ -1,10 +1,24 @@
 type QueryRoot {
   greeting: GreetingQuery!
   user: UserQuery!
+  product: ProductQuery!
+}
+
+type Product {
+  id: String!
+  description: String!
+  productName: String!
+  categories: [String!]!
+  price: Price!
 }
 
 type Greeting {
   name: String!
+}
+
+type Price {
+  value: Float!
+  unit: String!
 }
 
 type UserQuery {
@@ -18,6 +32,15 @@ type Addresses {
   housenummer: String!
   country: String!
   state: String
+}
+
+type ProductQuery {
+  getProductById(id: String!): Product!
+  getProducts: [Product!]!
+  getProductsByCategory(category: String!): [Product!]!
+  getProductsPriceInterval(minPrice: Float!, maxPrice: Float!): [Product!]!
+  getProductsMaxPrice(maxPrice: Float!): [Product!]!
+  getProductsMinPrice(minPrice: Float!): [Product!]!
 }
 
 type User {

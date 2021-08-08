@@ -4,12 +4,14 @@ use std::fs::File;
 use std::io::prelude::*;
 
 use crate::responder::greeting_responder::GreetingQuery;
+use crate::responder::product_responder::ProductQuery;
 use crate::responder::user_responder::UserQuery;
 
 #[derive(juniper::GraphQLObject)]
 pub struct QueryRoot {
     greeting: GreetingQuery,
     user: UserQuery,
+    product: ProductQuery
 }
 
 impl QueryRoot {
@@ -17,6 +19,7 @@ impl QueryRoot {
         Self {
             greeting: GreetingQuery,
             user: UserQuery,
+            product: ProductQuery
         }
     }
 }
