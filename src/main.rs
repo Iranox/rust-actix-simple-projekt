@@ -1,13 +1,15 @@
+mod DbPool;
 mod domain;
 mod responder;
 mod schema;
 
-use std::sync::Arc;
+use std::{env, sync::Arc};
 
 use actix_cors::Cors;
 use actix_web::{middleware, web, App, Error, HttpResponse, HttpServer};
 use juniper::http::graphiql::graphiql_source;
 use juniper::http::GraphQLRequest;
+use sqlx::PgPool;
 
 use crate::schema::{create_schema, Schema};
 
@@ -35,8 +37,14 @@ async fn graphql(
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     let schema = std::sync::Arc::new(create_schema());
+    let database_url = env::var("DATABASE_URL").expect("DATABASE_URL is not set in .env file");
+    let db_pool = PgPool::new(&database_url).await.unwrap();
+    let state = DbPool::AppState { db: db_pool };
+    let shared_data = web::Data::new(state);
+
     HttpServer::new(move || {
         App::new()
+            .app_data(shared_data.clone())
             .data(schema.clone())
             .wrap(middleware::Logger::default())
             .wrap(
