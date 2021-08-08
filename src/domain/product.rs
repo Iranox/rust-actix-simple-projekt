@@ -9,7 +9,7 @@ pub struct Product {
     description: String,
     product_name: String,
     categories: Vec<String>,
-    price: Price,
+    pub price: Price,
 }
 
 impl Product {

@@ -3,6 +3,7 @@ use juniper::{EmptySubscription, RootNode};
 use std::fs::File;
 use std::io::prelude::*;
 
+use crate::responder::bill_responder::BillQuery;
 use crate::responder::greeting_responder::GreetingQuery;
 use crate::responder::product_responder::ProductQuery;
 use crate::responder::user_responder::UserQuery;
@@ -11,7 +12,8 @@ use crate::responder::user_responder::UserQuery;
 pub struct QueryRoot {
     greeting: GreetingQuery,
     user: UserQuery,
-    product: ProductQuery
+    product: ProductQuery,
+    bill: BillQuery
 }
 
 impl QueryRoot {
@@ -19,7 +21,8 @@ impl QueryRoot {
         Self {
             greeting: GreetingQuery,
             user: UserQuery,
-            product: ProductQuery
+            product: ProductQuery,
+            bill: BillQuery
         }
     }
 }

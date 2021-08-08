@@ -2,6 +2,11 @@ type QueryRoot {
   greeting: GreetingQuery!
   user: UserQuery!
   product: ProductQuery!
+  bill: BillQuery!
+}
+
+type BillQuery {
+  billByUserName(userName: String!): [Bill!]!
 }
 
 type Product {
@@ -15,6 +20,9 @@ type Product {
 type Greeting {
   name: String!
 }
+
+"DateTime"
+scalar DateTimeUtc
 
 type Price {
   value: Float!
@@ -47,6 +55,14 @@ type User {
   username: String!
   email: String!
   addresses: Addresses!
+}
+
+type Bill {
+  user: User!
+  products: [Product!]!
+  billingAddress: Addresses!
+  finalPrice: Price!
+  date: DateTimeUtc!
 }
 
 type GreetingQuery {
