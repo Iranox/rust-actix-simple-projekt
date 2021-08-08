@@ -1,4 +1,5 @@
 mod DbPool;
+mod database;
 mod domain;
 mod responder;
 mod schema;

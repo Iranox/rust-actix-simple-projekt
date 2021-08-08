@@ -10,7 +10,7 @@ edition = "2018"
 dotenv = "0.15.0"
 actix-web = "3"
 actix-cors = "0.4.0"
-#Postgres access library
+tokio = { version = "1.9.0", features = ["full"] }
 sqlx = {version = "0.3.5", default_features = false, features = ["postgres","runtime-tokio",
 "macros","chrono"]}
 serde = { version = "1.0.110", features = ["derive"] }
