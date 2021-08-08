@@ -12,9 +12,18 @@ type UserQuery {
   findUsers: [User!]!
 }
 
+type Addresses {
+  zip: String!
+  street: String!
+  housenummer: String!
+  country: String!
+  state: String
+}
+
 type User {
   username: String!
   email: String!
+  addresses: Addresses!
 }
 
 type GreetingQuery {
