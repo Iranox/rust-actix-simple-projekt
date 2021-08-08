@@ -3,7 +3,7 @@ type QueryRoot {
   user: UserQuery!
 }
 
-type Greetings {
+type Greeting {
   name: String!
 }
 
@@ -18,7 +18,7 @@ type User {
 }
 
 type GreetingQuery {
-  greetingName(name: String!): Greetings!
+  hello: Greeting!
 }
 
 schema {

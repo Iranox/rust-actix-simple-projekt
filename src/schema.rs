@@ -3,8 +3,8 @@ use juniper::{EmptySubscription, RootNode};
 use std::fs::File;
 use std::io::prelude::*;
 
-use crate::hello_responder::hello::GreetingQuery;
-use crate::user_responder::user_handler::UserQuery;
+use crate::responder::greeting_responder::GreetingQuery;
+use crate::responder::user_responder::UserQuery;
 
 #[derive(juniper::GraphQLObject)]
 pub struct QueryRoot {

@@ -1,6 +1,6 @@
-mod hello_responder;
+mod domain;
+mod responder;
 mod schema;
-mod user_responder;
 
 use std::sync::Arc;
 

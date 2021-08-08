@@ -1,5 +1,4 @@
-#[path = "model/mod.rs"]
-mod model;
+use crate::domain::user::User;
 
 use std::vec;
 
@@ -9,20 +8,20 @@ pub struct UserQuery;
 
 #[juniper::graphql_object]
 impl UserQuery {
-    fn findUserByName(name: String) -> FieldResult<model::user::User> {
-        Ok(model::user::User {
+    fn findUserByName(name: String) -> FieldResult<User> {
+        Ok(User {
             username: name,
             email: String::from("test@example.com"),
         })
     }
 
-    fn findUsers() -> FieldResult<Vec<model::user::User>> {
+    fn findUsers() -> FieldResult<Vec<User>> {
         let users = vec![
-            model::user::User {
+            User {
                 username: String::from("TestUser A"),
                 email: String::from("test@example.com"),
             },
-            model::user::User {
+            User {
                 username: String::from("TestUser B"),
                 email: String::from("foo@example.com"),
             },
