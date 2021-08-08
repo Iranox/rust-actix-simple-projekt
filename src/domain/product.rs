@@ -7,7 +7,7 @@ use super::price::Price;
 pub struct Product {
     id: String,
     description: String,
-    productName: String,
+    product_name: String,
     categories: Vec<String>,
     price: Price,
 }
@@ -16,7 +16,7 @@ impl Product {
     pub fn new(
         id: String,
         description: String,
-        productName: String,
+        product_name: String,
         categories: Vec<String>,
         price: f64,
         unit: String,
@@ -28,7 +28,7 @@ impl Product {
         Product {
             id,
             description,
-            productName,
+            product_name,
             categories,
             price,
         }

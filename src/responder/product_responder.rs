@@ -41,14 +41,14 @@ impl ProductQuery {
         Ok(products)
     }
 
-    fn getProductsPriceInterval(minPrice: f64, maxPrice: f64) -> FieldResult<Vec<Product>> {
+    fn getProductsPriceInterval(min_price: f64, max_price: f64) -> FieldResult<Vec<Product>> {
         let products = vec![
             Product::new(
                 String::from("123123"),
                 String::from("aslfdjjl"),
                 String::from(""),
                 vec![String::from("Placeholder")],
-                minPrice,
+                min_price,
                 String::from("€"),
             ),
             Product::new(
@@ -56,7 +56,7 @@ impl ProductQuery {
                 String::from("aslfdjjl"),
                 String::from(""),
                 vec![String::from("Placeholder")],
-                maxPrice,
+                max_price,
                 String::from("€"),
             ),
         ];
@@ -64,14 +64,14 @@ impl ProductQuery {
     }
 
 
-    fn getProductsMaxPrice(maxPrice: f64) -> FieldResult<Vec<Product>> {
+    fn getProductsMaxPrice(max_price: f64) -> FieldResult<Vec<Product>> {
         let products = vec![
             Product::new(
                 String::from("123123"),
                 String::from("aslfdjjl"),
                 String::from(""),
                 vec![String::from("Placeholder")],
-                maxPrice,
+                max_price,
                 String::from("€"),
             ),
             Product::new(
@@ -79,21 +79,21 @@ impl ProductQuery {
                 String::from("aslfdjjl"),
                 String::from(""),
                 vec![String::from("Placeholder")],
-                maxPrice,
+                max_price,
                 String::from("€"),
             ),
         ];
         Ok(products)
     }
 
-    fn getProductsMinPrice(minPrice: f64) -> FieldResult<Vec<Product>> {
+    fn getProductsMinPrice(min_price: f64) -> FieldResult<Vec<Product>> {
         let products = vec![
             Product::new(
                 String::from("123123"),
                 String::from("aslfdjjl"),
                 String::from(""),
                 vec![String::from("Placeholder")],
-                minPrice,
+                min_price,
                 String::from("€"),
             ),
             Product::new(
@@ -101,7 +101,7 @@ impl ProductQuery {
                 String::from("aslfdjjl"),
                 String::from(""),
                 vec![String::from("Placeholder")],
-                minPrice,
+                min_price,
                 String::from("€"),
             ),
         ];

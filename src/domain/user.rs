@@ -12,7 +12,7 @@ pub struct User {
 }
 
 impl User {
-    pub fn new(userName: String, email: String)->User{
+    pub fn new(user_name: String, email: String)->User{
         let addresses = Addresses{
             street:"Test".to_string(),
             housenummer: "12b".to_string(),
@@ -21,7 +21,7 @@ impl User {
             state: None,
         };
         User {
-            username: userName,
+            username: user_name,
             email,
             addresses,
         }
